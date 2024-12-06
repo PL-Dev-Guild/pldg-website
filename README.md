@@ -50,17 +50,6 @@ src/
 - FAQ section with animations
 - SEO optimized
 
-## 🔧 Configuration
-
-### Environment Variables
-
-```env
-# Add any environment variables here
-```
-
-### Deployment
-
-The site is configured for deployment on Vercel. Simply connect your repository and Vercel will automatically handle the build and deployment process.
 
 ## 🎨 Design System
 
@@ -76,23 +65,6 @@ The site is configured for deployment on Vercel. Simply connect your repository 
 - Headers: Space Grotesk
 - Code: JetBrains Mono
 - Body: Inter
-
-## 📱 Mobile Optimization
-
-The site is fully responsive with breakpoints at:
-
-- sm: 640px
-- md: 768px
-- lg: 1024px
-- xl: 1280px
-
-## 🔍 SEO
-
-- Optimized meta tags
-- Open Graph support
-- Twitter Card support
-- Sitemap included
-- Robots.txt configured
 
 ## 🤝 Contributing
 
