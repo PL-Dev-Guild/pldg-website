@@ -1,0 +1,25 @@
+<svg
+  viewBox="0 0 100 100"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <style>
+    path {
+      stroke: #3B82F6;
+      stroke-width: 2;
+      fill: none;
+    }
+    @media (prefers-color-scheme: dark) {
+      path {
+        stroke: #60A5FA;
+      }
+    }
+  </style>
+  <g>
+    <path d="M20,70 L50,85 L80,70 L50,55 Z" />
+    <path d="M20,70 L20,30 L50,15 L50,55 Z" />
+    <path d="M50,55 L50,15 L80,30 L80,70 Z" />
+    <path d="M35,62.5 L65,77.5" stroke-dasharray="2,2" />
+    <path d="M35,22.5 L35,62.5" stroke-dasharray="2,2" />
+    <path d="M65,37.5 L65,77.5" stroke-dasharray="2,2" />
+  </g>
+</svg> 
