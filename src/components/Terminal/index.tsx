@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Terminal as TerminalIcon } from 'lucide-react';
 import { Line } from './Line';
@@ -34,9 +34,20 @@ export const Terminal = () => {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [activeCommand, setActiveCommand] = useState(0);
   const [currentOutputIndex, setCurrentOutputIndex] = useState(-1);
-  const [isTypingCommand, setIsTypingCommand] = useState(true);
+  const [isTypingCommand, setIsTypingCommand] = useState(false);
+  const [showInitialCursor, setShowInitialCursor] = useState(true);
 
   const currentCommand = commands[activeCommand];
+
+  // Start typing after initial cursor blink
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowInitialCursor(false);
+      setIsTypingCommand(true);
+    }, 2000); // Show blinking cursor for 2 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const moveToNextOutput = () => {
     if (currentOutputIndex < currentCommand.outputs.length - 1) {
@@ -104,12 +115,22 @@ export const Terminal = () => {
           </div>
         ))}
         
+        {showInitialCursor && (
+          <Line 
+            prefix="$"
+            text=""
+            textColor="text-mint"
+            showCursor={true}
+          />
+        )}
+        
         {isTypingCommand && (
           <Line 
             prefix="$"
             text={currentCommand.command}
             textColor="text-mint"
             onComplete={handleCommandComplete}
+            delay={activeCommand === 0 ? 100 : 0} // Slower typing for first command
           />
         )}
         
