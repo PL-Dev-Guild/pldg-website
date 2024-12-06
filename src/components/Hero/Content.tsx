@@ -1,19 +1,14 @@
 import { motion } from 'framer-motion';
 import { Button } from '../Button';
-import { Terminal } from '../Terminal';
 
 export const Content = () => (
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 relative z-10">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 relative z-10">
     <div className="max-w-5xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="mb-24">
-          <Terminal />
-        </div>
-
         <div className="max-w-3xl">
           <h1 className="font-spaceGrotesk font-bold text-7xl sm:text-8xl text-white mb-8 tracking-tight leading-none">
             <span className="text-electric">{`{ `}</span>
@@ -37,8 +32,6 @@ export const Content = () => (
                 href="https://airtable.com/appFEDy5FPBFHPY5r/pagUmnY8upmg0Ge5q/form" 
                 variant="primary" 
                 className="text-base px-8 py-4 group font-jetbrains"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 pldg apply --cohort=2
                 <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>

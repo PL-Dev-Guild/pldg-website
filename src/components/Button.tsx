@@ -5,9 +5,10 @@ interface ButtonProps {
   variant?: 'primary' | 'ghost' | 'nav';
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
-export const Button = ({ href, variant = 'ghost', children, className = '' }: ButtonProps) => {
+export const Button = ({ href, variant = 'ghost', children, className = '', onClick }: ButtonProps) => {
   const baseStyles = "font-inter transition-all duration-200 text-sm tracking-wide";
   const variants = {
     primary: "px-6 py-3 bg-electric text-white hover:bg-electric/90 border-2 border-electric hover:border-electric/90 rounded-full",
@@ -16,7 +17,11 @@ export const Button = ({ href, variant = 'ghost', children, className = '' }: Bu
   };
 
   return (
-    <a href={href} className={`${baseStyles} ${variants[variant]} ${className}`}>
+    <a 
+      href={href} 
+      className={`${baseStyles} ${variants[variant]} ${className}`}
+      onClick={onClick}
+    >
       {children}
     </a>
   );
