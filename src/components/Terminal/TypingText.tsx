@@ -51,7 +51,7 @@ export const TypingText = ({
     <span className={className}>
       {displayedText}
       {displayedText.length < text.length && (
-        <span className="animate-pulse">▋</span>
+        <span className="inline-block w-2 h-4 ml-0.5 -mb-0.5 bg-mint/80 animate-pulse"></span>
       )}
     </span>
   );

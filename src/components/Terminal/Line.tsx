@@ -14,22 +14,22 @@ export const Line = ({
   prefix, 
   text, 
   delay = 0,
-  prefixColor = 'text-steel/50',
-  textColor = 'text-mint',
+  prefixColor = 'text-steel/70',
+  textColor = 'text-mint font-medium',
   onComplete,
   shouldAnimate = true
 }: LineProps) => (
-  <code className="block">
-    {prefix && <span className={prefixColor}>{prefix} </span>}
+  <code className="block text-base leading-relaxed">
+    {prefix && <span className={`${prefixColor} font-medium`}>{prefix} </span>}
     {shouldAnimate ? (
       <TypingText 
         text={text}
         delay={delay}
-        className={textColor}
+        className={`${textColor} drop-shadow-sm`}
         onComplete={onComplete}
       />
     ) : (
-      <span className={textColor}>{text}</span>
+      <span className={`${textColor} drop-shadow-sm`}>{text}</span>
     )}
   </code>
 );

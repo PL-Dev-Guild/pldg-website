@@ -54,7 +54,7 @@ function App() {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
         </div>
         
-        <Section id="about" title="About PLDG" className="pt-20 md:pt-32">
+        <Section id="about" title="About PLDG" className="pt-24 md:pt-32">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 px-4 md:px-0">
             <div className="space-y-6 md:space-y-8">
               <p className="text-steel text-base md:text-lg leading-relaxed">
@@ -124,8 +124,8 @@ function App() {
               <div className="animate-pulse bg-steel/5 rounded-lg w-full max-w-3xl h-64" />
             </div>
           }>
-            <Section id="partners" title="Our Ecosystem" className="pt-32 md:pt-40">
-              <div className="max-w-3xl mx-auto mb-8 md:mb-12 text-center px-4 md:px-0">
+            <Section id="partners" title="Our Ecosystem" className="pt-32 md:pt-40 pb-20 md:pb-32">
+              <div className="max-w-3xl mx-auto mb-12 md:mb-16 text-center px-4 md:px-0">
                 <p className="text-steel text-base md:text-lg leading-relaxed">
                   Work with leading Web3 protocols and technologies that are shaping the future of the decentralized internet.
                 </p>
@@ -136,7 +136,7 @@ function App() {
         </ErrorBoundary>
 
         <ErrorBoundary>
-          <Section id="rewards" title="Calculate Your Impact Rewards" className="pt-32 md:pt-40 bg-steel/5">
+          <Section id="rewards" title="Calculate Your Impact Rewards" className="pt-40 md:pt-52 bg-steel/5">
             <div className="max-w-3xl mb-8 md:mb-12 px-4 md:px-0">
               <p className="text-steel text-base md:text-lg leading-relaxed">
                 Contributors receive weekly rewards based on their impact level and time commitment. 
