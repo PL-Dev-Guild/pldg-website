@@ -28,7 +28,7 @@ npm run preview
 
 ## 📁 Project Structure
 
-```
+```bash
 src/
 ├── components/         # React components
 │   ├── Hero/          # Hero section components
@@ -53,22 +53,26 @@ src/
 ## 🔧 Configuration
 
 ### Environment Variables
+
 ```env
 # Add any environment variables here
 ```
 
 ### Deployment
+
 The site is configured for deployment on Vercel. Simply connect your repository and Vercel will automatically handle the build and deployment process.
 
 ## 🎨 Design System
 
 ### Colors
+
 - Primary: Electric Blue (#3B82F6)
 - Secondary: Mint (#10B981)
 - Background: Black (#000000)
 - Text: Steel (#94A3B8)
 
 ### Typography
+
 - Headers: Space Grotesk
 - Code: JetBrains Mono
 - Body: Inter
@@ -76,6 +80,7 @@ The site is configured for deployment on Vercel. Simply connect your repository 
 ## 📱 Mobile Optimization
 
 The site is fully responsive with breakpoints at:
+
 - sm: 640px
 - md: 768px
 - lg: 1024px
@@ -100,16 +105,18 @@ The site is fully responsive with breakpoints at:
 ## 📝 Maintenance Notes
 
 ### Key Areas for Updates
+
 - Timeline events in `App.tsx`
 - FAQ content in `FAQSection.tsx`
 - Partner information in `PartnerShowcase.tsx`
 - Reward calculations in `RewardCalculator.tsx`
 
 ### Performance Considerations
+
 - Images are stored in `/public/partners/` and `/public/logo/`
 - Lazy loading is implemented for below-the-fold content
 - Animations are optimized for performance
 
 ## 📄 License
 
-This project is proprietary and confidential. All rights reserved by Protocol Labs. 
+This project is proprietary and confidential. All rights reserved by Protocol Labs.
