@@ -88,7 +88,3 @@ src/
 - Images are stored in `/public/partners/` and `/public/logo/`
 - Lazy loading is implemented for below-the-fold content
 - Animations are optimized for performance
-
-## 📄 License
-
-This project is proprietary and confidential. All rights reserved by Protocol Labs.
