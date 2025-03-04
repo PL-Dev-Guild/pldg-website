@@ -29,11 +29,11 @@ export const Content = () => (
             
             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
               <Button 
-                href="https://airtable.com/appFEDy5FPBFHPY5r/pagUmnY8upmg0Ge5q/form" 
+                href="https://airtable.com/appFEDy5FPBFHPY5r/pagtQ6iiVRuettENG/form" 
                 variant="primary" 
                 className="text-base px-8 py-4 group font-jetbrains"
               >
-                pldg apply --cohort=2
+                pldg apply --cohort=3
                 <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>
               </Button>
               <div className="flex items-center space-x-4 bg-steel/5 rounded-full px-6 py-3">
@@ -67,7 +67,7 @@ export const Content = () => (
               <div className="flex items-center space-x-3">
                 <div className="w-1 h-8 bg-electric rounded-full"></div>
                 <p className="text-lg text-steel font-jetbrains">
-                  <span className="text-electric">git checkout</span> cohort-2 <span className="text-steel/70">// Deadline: Dec 13</span>
+                  <span className="text-electric">git checkout</span> cohort-3 <span className="text-steel/70">// Deadline: May 2025</span>
                 </p>
               </div>
             </div>

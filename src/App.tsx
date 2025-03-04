@@ -16,24 +16,24 @@ const PartnerShowcase = lazy(() => import('./components/PartnerShowcase').then(m
 
 const timelineEvents: TimelineEvent[] = [
   {
-    title: "Cohort 2 Applications Open",
-    date: "Now - Dec 13, 2024",
+    title: "Cohort 2",
+    date: "Jan 13 - Apr 6, 2025",
     status: "in-progress"
   },
   {
-    title: "Cohort 2 Starts",
-    date: "January 13, 2025",
+    title: "Cohort 3 Starts",
+    date: "May 2025",
     status: "upcoming"
   },
   {
     title: "Phase 1: Foundation",
     date: "Jan 13 - Feb 23, 2025",
-    status: "upcoming"
+    status: "completed"
   },
   {
     title: "Phase 2: Impact",
     date: "Feb 24 - Apr 6, 2025",
-    status: "upcoming"
+    status: "in-progress"
   }
 ];
 
@@ -58,7 +58,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 px-4 md:px-0">
             <div className="space-y-6 md:space-y-8">
               <p className="text-steel text-base md:text-lg leading-relaxed">
-                The Protocol Labs Dev Guild (PLDG) grows the impact of open source contributors 
+                The Protocol Labs Developer Guild (PLDG) grows the impact of open source contributors 
                 to Protocol Labs & Web3 public goods projects.
               </p>
               <div className="space-y-6">
@@ -176,17 +176,17 @@ function App() {
               Join a community of developers creating lasting impact in the open source ecosystem.
             </p>
             <motion.a 
-              href="https://airtable.com/appFEDy5FPBFHPY5r/pagUmnY8upmg0Ge5q/form" 
+              href="https://airtable.com/appFEDy5FPBFHPY5r/pagtQ6iiVRuettENG/form" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-block px-6 md:px-8 py-4 bg-electric text-white font-inter text-base md:text-lg rounded-full hover:bg-electric/90 transition-all hover:scale-105 hover:shadow-xl shadow-lg shadow-electric/20"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Apply for Cohort 2
+              Apply for Cohort 3
             </motion.a>
             <p className="mt-4 md:mt-6 text-steel/70 font-jetbrains text-sm">
-              Applications close December 13, 2024
+              Applications go live in May 2025
             </p>
           </div>
         </Section>
