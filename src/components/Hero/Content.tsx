@@ -29,7 +29,7 @@ export const Content = () => (
             
             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
               <Button 
-                href="https://airtable.com/appFEDy5FPBFHPY5r/pagtQ6iiVRuettENG/form" 
+                href="https://linktr.ee/PLDevGuild" 
                 variant="primary" 
                 className="text-base px-8 py-4 group font-jetbrains"
               >
@@ -67,7 +67,7 @@ export const Content = () => (
               <div className="flex items-center space-x-3">
                 <div className="w-1 h-8 bg-electric rounded-full"></div>
                 <p className="text-lg text-steel font-jetbrains">
-                  <span className="text-electric">git checkout</span> cohort-3 <span className="text-steel/70">// Deadline: May 2025</span>
+                  <span className="text-electric">git checkout</span> cohort-3 <span className="text-steel/70">// Deadline: April 2025</span>
                 </p>
               </div>
             </div>

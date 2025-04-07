@@ -52,7 +52,7 @@ export const Navbar = () => {
               FAQ
             </Button>
             <a 
-              href="https://airtable.com/appFEDy5FPBFHPY5r/pagtQ6iiVRuettENG/form"
+              href="https://linktr.ee/PLDevGuild"
               target="_blank"
               rel="noopener noreferrer" 
               className="ml-4 font-jetbrains text-base px-6 py-2.5 bg-electric text-white rounded-full hover:bg-electric/90 transition-all hover:scale-105 shadow-lg shadow-electric/20 font-medium"
@@ -158,7 +158,7 @@ export const Navbar = () => {
                   }}
                 >
                   <a 
-                    href="https://airtable.com/appFEDy5FPBFHPY5r/pagtQ6iiVRuettENG/form"
+                    href="https://linktr.ee/PLDevGuild"
                     target="_blank"
                     rel="noopener noreferrer" 
                     className="font-jetbrains text-base px-6 py-3 bg-electric text-white rounded-full hover:bg-electric/90 transition-all text-center shadow-lg shadow-electric/20 font-medium block"
