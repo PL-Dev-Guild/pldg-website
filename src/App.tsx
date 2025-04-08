@@ -22,8 +22,8 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     title: "Cohort 3 Starts",
-    date: "May 2025",
-    status: "upcoming"
+    date: "April 2025",
+    status: "Applications Live"
   },
   {
     title: "Phase 1: Foundation",
@@ -32,7 +32,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     title: "Phase 2: Impact",
-    date: "Feb 24 - Apr 6, 2025",
+    date: "Feb 24 - Apr 13, 2025",
     status: "in-progress"
   }
 ];
@@ -176,7 +176,7 @@ function App() {
               Join a community of developers creating lasting impact in the open source ecosystem.
             </p>
             <motion.a 
-              href="https://airtable.com/appFEDy5FPBFHPY5r/pagtQ6iiVRuettENG/form" 
+              href="https://linktr.ee/PLDevGuild" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-block px-6 md:px-8 py-4 bg-electric text-white font-inter text-base md:text-lg rounded-full hover:bg-electric/90 transition-all hover:scale-105 hover:shadow-xl shadow-lg shadow-electric/20"
@@ -186,7 +186,7 @@ function App() {
               Apply for Cohort 3
             </motion.a>
             <p className="mt-4 md:mt-6 text-steel/70 font-jetbrains text-sm">
-              Applications go live in May 2025
+              Applications are now live!
             </p>
           </div>
         </Section>
