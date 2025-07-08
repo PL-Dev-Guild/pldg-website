@@ -16,23 +16,23 @@ const PartnerShowcase = lazy(() => import('./components/PartnerShowcase').then(m
 
 const timelineEvents: TimelineEvent[] = [
   {
-    title: "Cohort 2",
-    date: "Jan 13 - Apr 6, 2025",
+    title: "Cohort 3",
+    date: "May 04 - Jul 26, 2025",
     status: "in-progress"
   },
   {
-    title: "Cohort 3 Starts",
-    date: "April 2025",
+    title: "Cohort 4 Starts",
+    date: "August 2025",
     status: "Applications Live"
   },
   {
     title: "Phase 1: Foundation",
-    date: "Jan 13 - Feb 23, 2025",
+    date: "May 04 - May 31, 2025",
     status: "completed"
   },
   {
     title: "Phase 2: Impact",
-    date: "Feb 24 - Apr 13, 2025",
+    date: "Jun 01 - Jul 26, 2025",
     status: "in-progress"
   }
 ];
@@ -183,7 +183,7 @@ function App() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Apply for Cohort 3
+              Apply for Cohort 4
             </motion.a>
             <p className="mt-4 md:mt-6 text-steel/70 font-jetbrains text-sm">
               Applications are now live!
