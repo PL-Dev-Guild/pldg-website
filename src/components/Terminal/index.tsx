@@ -21,7 +21,7 @@ const commands = [
     ]
   },
   {
-    command: "pldg apply --cohort=2 --confirm",
+    command: "pldg apply --cohort=4 --confirm",
     outputs: [
       { text: "Scanning GitHub profile... 🔍", color: "text-steel/70" },
       { text: "Analyzing contribution history... 📊", color: "text-mint" },
