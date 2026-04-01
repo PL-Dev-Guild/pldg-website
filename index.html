@@ -1,48 +1,836 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Primary Meta Tags -->
-    <title>PLDG - Protocol Labs Dev Guild</title>
-    <meta name="title" content="PLDG - Protocol Labs Dev Guild" />
-    <meta name="description" content="Join PLDG to grow your impact as an open source contributor. Work on cutting-edge Web3 projects, earn rewards, and connect with expert mentors." />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://pldg.xyz" />
-    <meta property="og:title" content="PLDG - Protocol Labs Dev Guild" />
-    <meta property="og:description" content="Join PLDG to grow your impact as an open source contributor. Work on cutting-edge Web3 projects, earn rewards, and connect with expert mentors." />
-    <meta property="og:image" content="https://pldg.xyz/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://pldg.xyz" />
-    <meta property="twitter:title" content="PLDG - Protocol Labs Dev Guild" />
-    <meta property="twitter:description" content="Join PLDG to grow your impact as an open source contributor. Work on cutting-edge Web3 projects, earn rewards, and connect with expert mentors." />
-    <meta property="twitter:image" content="https://pldg.xyz/og-image.png" />
-
-    <!-- Additional Meta Tags -->
-    <meta name="keywords" content="PLDG, Protocol Labs, Web3, Open Source, Developer Program, Blockchain, Filecoin, IPFS, Libp2p, Developer Guild" />
-    <meta name="author" content="Protocol Labs Dev Guild" />
-    <meta name="theme-color" content="#0066FF" />
-    
-    <!-- Robots and Canonical -->
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://pldg.xyz" />
-
-    <!-- Preconnect to Important Origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLDG · Protocol Labs Developer Guild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;450;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+ 
+/* ══════════════════════════════════════════════
+   DESIGN TOKENS
+══════════════════════════════════════════════ */
+:root {
+  /* Brand */
+  --blue:      #0052E0;
+  --blue-mid:  #1A6BFF;
+  --blue-lt:   #E8F0FF;
+  --green:     #009E63;
+  --green-lt:  #E2F5EC;
+  --black:     #0A0A0A;
+  --off-white: #F8F8F8;
+  --white:     #FFFFFF;
+ 
+  /* Greys */
+  --g-20:  #202020;
+  --g-30:  #303030;
+  --g-50:  #505050;
+  --g-80:  #808080;
+  --g-b0:  #B0B0B0;
+  --g-d8:  #D8D8D8;
+  --g-ec:  #ECECEC;
+  --g-f3:  #F3F3F3;
+ 
+  /* Type */
+  --font-head: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+ 
+  /* Layout */
+  --max:  1080px;
+  --pad:  48px;
+  --sv:   88px;   /* section vertical padding */
+  --radius: 10px;
+}
+ 
+/* ══════════════════════════════════════════════
+   BASE
+══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--black);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; }
+ 
+/* ══════════════════════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════════════════════ */
+ 
+/* Label above headings */
+.label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: block;
+  margin-bottom: 12px;
+}
+.label-white { color: rgba(255,255,255,0.5); }
+ 
+/* Hero display */
+.display {
+  font-family: var(--font-head);
+  font-size: clamp(38px, 5.5vw, 68px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: var(--black);
+}
+ 
+/* Section headings */
+.heading {
+  font-family: var(--font-head);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--black);
+}
+.heading-white { color: var(--white); }
+ 
+/* Sub copy under headings */
+.sub {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--g-80);
+  line-height: 1.7;
+  margin-top: 10px;
+  max-width: 520px;
+}
+.sub-white { color: rgba(255,255,255,0.5); }
+ 
+/* Body prose */
+.prose {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--g-50);
+  line-height: 1.8;
+}
+.prose p + p { margin-top: 16px; }
+.prose strong { color: var(--black); font-weight: 500; }
+ 
+/* ══════════════════════════════════════════════
+   LAYOUT CONTAINERS
+══════════════════════════════════════════════ */
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.section {
+  padding: var(--sv) var(--pad);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.section-bg {
+  background: var(--g-f3);
+  border-top: 1px solid var(--g-ec);
+  border-bottom: 1px solid var(--g-ec);
+}
+.section-bg > .section { background: transparent; }
+.section-dark { background: var(--black); }
+.section-dark > .section { background: transparent; }
+ 
+.section-hd { margin-bottom: 44px; }
+hr { border: none; border-top: 1px solid var(--g-ec); }
+ 
+/* ══════════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+.btn svg { flex-shrink: 0; }
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: #0042b8; }
+.btn-outline  { background: transparent; color: var(--black); border: 1.5px solid var(--g-d8); }
+.btn-outline:hover { border-color: var(--g-b0); background: var(--g-f3); }
+.btn-solid-white { background: #fff; color: var(--black); }
+.btn-solid-white:hover { background: #f0f0f0; }
+.btn-ghost-white {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  border: 1.5px solid rgba(255,255,255,0.15);
+}
+.btn-ghost-white:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+ 
+/* ══════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  height: 60px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--g-ec);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 9px;
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+.nav-mark {
+  width: 28px; height: 28px;
+  background: var(--blue); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-mark svg {
+  width: 14px; height: 14px;
+  stroke: #fff; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.nav-status {
+  display: flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--g-80);
+  letter-spacing: 0.02em;
+}
+.pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green); flex-shrink: 0;
+}
+ 
+/* ══════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════ */
+.hero {
+  padding: 96px var(--pad) 80px;
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-left {}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--g-80);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::after {
+  content: ''; flex: 1; max-width: 32px;
+  height: 1px; background: var(--g-d8);
+}
+.hero-desc {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--g-50);
+  line-height: 1.75;
+  margin-top: 22px;
+  max-width: 480px;
+}
+.hero-actions {
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; margin-top: 36px;
+}
+.hero-right {}
+.hero-stats-panel {
+  background: var(--black);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.hsp-cell {
+  padding: 24px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.hsp-cell:nth-child(3n) { border-right: none; }
+.hsp-cell:nth-last-child(-n+3) { border-bottom: none; }
+.hsp-num {
+  font-family: var(--font-head);
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.hsp-num .g { color: var(--green); }
+.hsp-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.4;
+  font-weight: 400;
+}
+ 
+/* ══════════════════════════════════════════════
+   ABOUT
+══════════════════════════════════════════════ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 64px;
+  align-items: start;
+}
+.fact-table {
+  border: 1px solid var(--g-ec);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+}
+.fact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--g-ec);
+  gap: 16px;
+}
+.fact-row:last-child { border-bottom: none; }
+.fk { font-size: 12px; color: var(--g-80); white-space: nowrap; }
+.fv {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--black);
+  text-align: right;
+}
+.fv-blue  { color: var(--blue); }
+.fv-green { color: var(--green); }
+ 
+/* ══════════════════════════════════════════════
+   HIRE ALUMNI
+══════════════════════════════════════════════ */
+.hire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.hire-cards { display: flex; flex-direction: column; gap: 10px; }
+.hcard {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+.hcard-icon {
+  width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0;
+  background: rgba(26,107,255,0.18);
+  border: 1px solid rgba(26,107,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+}
+.hcard-icon svg {
+  width: 14px; height: 14px;
+  stroke: var(--blue-mid); fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.hcard-title { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+.hcard-desc  { font-size: 12px; color: rgba(255,255,255,0.38); line-height: 1.55; }
+ 
+/* ══════════════════════════════════════════════
+   PARTNER STRIP
+══════════════════════════════════════════════ */
+.pstrip { display: flex; flex-wrap: wrap; gap: 8px; }
+.pchip {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 14px;
+  background: var(--white); border: 1.5px solid var(--g-ec);
+  border-radius: 7px;
+  font-size: 13px; font-weight: 500; color: var(--black);
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.pchip:hover { border-color: var(--blue); background: var(--blue-lt); color: var(--blue); }
+.pchip-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--blue); opacity: 0.35; flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+.pchip:hover .pchip-dot { opacity: 1; }
+.pchip-tip {
+  position: absolute; bottom: calc(100% + 9px); left: 0;
+  width: 260px;
+  background: var(--g-20); color: rgba(255,255,255,0.85);
+  font-size: 12px; font-weight: 400; line-height: 1.6;
+  font-family: var(--font-body);
+  padding: 11px 14px; border-radius: 7px;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.12s; z-index: 40;
+}
+.pchip-tip::after {
+  content: ''; position: absolute; top: 100%; left: 16px;
+  border: 5px solid transparent; border-top-color: var(--g-20);
+}
+.pchip:hover .pchip-tip { opacity: 1; }
+ 
+/* ══════════════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════════════ */
+.t-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.t-card {
+  background: var(--white);
+  border: 1.5px solid var(--g-ec);
+  border-radius: var(--radius);
+  padding: 26px;
+  transition: border-color 0.15s;
+}
+.t-card:hover { border-color: var(--g-d8); }
+.t-quote {
+  font-size: 14px; font-weight: 400;
+  color: var(--g-50); line-height: 1.75;
+  margin-bottom: 20px;
+}
+.t-quote::before { content: '\201C'; color: var(--blue); }
+.t-quote::after  { content: '\201D'; color: var(--blue); }
+.t-author { display: flex; align-items: center; gap: 10px; }
+.t-av {
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  background: var(--blue-lt); color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.02em;
+  display: flex; align-items: center; justify-content: center;
+}
+.t-av-g { background: var(--green-lt); color: var(--green); }
+.t-name { font-size: 13px; font-weight: 500; color: var(--black); }
+.t-role { font-size: 11.5px; color: var(--g-80); margin-top: 1px; }
+ 
+/* ══════════════════════════════════════════════
+   WHAT'S NEXT — coloured program cards
+══════════════════════════════════════════════ */
+.nc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+.nc {
+  display: block; border-radius: var(--radius);
+  padding: 22px 20px 20px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative; overflow: hidden;
+}
+.nc:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.14); }
+/* Colour variants */
+.nc-1 { background: var(--blue); }
+.nc-2 { background: #0A2E1A; }
+.nc-3 { background: var(--green); }
+.nc-4 { background: #102040; }
+.nc-5 { background: #1B3A3A; }
+.nc-6 { background: #1A1A1A; }
+ 
+.nc-tag {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 10px; display: block;
+}
+.nc-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+.nc-name {
+  font-family: var(--font-head);
+  font-size: 16px; font-weight: 700;
+  letter-spacing: -0.02em; color: #fff;
+  line-height: 1.2;
+}
+.nc-arr { font-size: 16px; color: rgba(255,255,255,0.3); transition: color 0.15s; }
+.nc:hover .nc-arr { color: rgba(255,255,255,0.8); }
+.nc-desc { font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+ 
+/* DevSpot */
+.devspot {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  background: var(--black); border-radius: var(--radius); padding: 22px 26px;
+  text-decoration: none; transition: background 0.15s;
+}
+.devspot:hover { background: var(--g-20); }
+.ds-name { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 3px; }
+.ds-sub  { font-size: 12.5px; color: rgba(255,255,255,0.38); }
+.ds-cta  { padding: 10px 18px; background: var(--blue); color: #fff; border-radius: 7px; font-size: 12.5px; font-weight: 500; white-space: nowrap; transition: background 0.15s; }
+.devspot:hover .ds-cta { background: #0042b8; }
+ 
+/* ══════════════════════════════════════════════
+   CLOSING
+══════════════════════════════════════════════ */
+.closing {
+  padding: var(--sv) var(--pad);
+  text-align: center;
+  border-top: 1px solid var(--g-ec);
+}
+.closing-inner { max-width: 520px; margin: 0 auto; }
+.closing-body {
+  font-size: 15px; color: var(--g-80); line-height: 1.75;
+  margin: 14px 0 30px;
+}
+.closing-actions { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+ 
+/* ══════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════ */
+.footer {
+  border-top: 1px solid var(--g-ec);
+  padding: 22px var(--pad);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--g-b0);
+}
+.footer-links { display: flex; gap: 22px; }
+.footer-link { font-size: 12.5px; color: var(--g-b0); transition: color 0.15s; }
+.footer-link:hover { color: var(--black); }
+ 
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  :root { --pad: 22px; --sv: 60px; }
+  .hero             { grid-template-columns: 1fr; gap: 40px; }
+  .about-grid       { grid-template-columns: 1fr; gap: 36px; }
+  .hire-grid        { grid-template-columns: 1fr; gap: 36px; }
+  .t-grid           { grid-template-columns: 1fr; }
+  .nc-grid          { grid-template-columns: 1fr 1fr; }
+  .devspot          { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .footer           { flex-direction: column; gap: 14px; text-align: center; }
+  .footer-links     { justify-content: center; }
+  .pchip-tip        { display: none; }
+}
+@media (max-width: 520px) {
+  .nc-grid { grid-template-columns: 1fr; }
+  .hero-stats-panel { grid-template-columns: repeat(2, 1fr); }
+  .hsp-cell:nth-child(3n)         { border-right: 1px solid rgba(255,255,255,0.07); }
+  .hsp-cell:nth-child(2n)         { border-right: none; }
+  .hsp-cell:nth-last-child(-n+3)  { border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .hsp-cell:nth-last-child(-n+2)  { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-mark">
+      <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    </div>
+    PLDG
+  </div>
+  <div class="nav-status">
+    <span class="pulse"></span>
+    Program concluded · March 2026
+  </div>
+</nav>
+ 
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Protocol Labs Developer Guild · 2024 – 2026</p>
+    <h1 class="display">18 months.<br>Real code.<br>Global impact.</h1>
+    <p class="hero-desc">A cohort-based open source contributor program by Protocol Labs, pairing developers with Web3 infrastructure projects, core engineering mentorship, and a community spanning 20+ countries.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://devspot.app" target="_blank" rel="noopener">
+        Explore what's next on DevSpot
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="btn btn-outline" href="https://github.com/protocol" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats-panel">
+      <div class="hsp-cell">
+        <div class="hsp-num">18<span class="g">+</span></div>
+        <div class="hsp-label">Months running</div>
+      </div>
+      <div class="hsp-cell">
+        <div class="hsp-num">6</div>
+        <div class="hsp-label">Cohorts completed</div>
+      </div>
+      <div class="hsp-cell">
+        <div class="hsp-num">4k<span class="g">+</span></div>
+        <div class="hsp-label">PRs merged</div>
+      </div>
+      <div class="hsp-cell">
+        <div class="hsp-num">20<span class="g">+</span></div>
+        <div class="hsp-label">Countries</div>
+      </div>
+      <div class="hsp-cell">
+        <div class="hsp-num">11</div>
+        <div class="hsp-label">Tech partners</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<hr>
+ 
+<!-- ABOUT -->
+<div class="section">
+  <div class="section-hd">
+    <span class="label">About the program</span>
+    <h2 class="heading">A 12-week program built around real contributions.</h2>
+  </div>
+  <div class="about-grid">
+    <div class="prose">
+      <p>PLDG matched developers with open source projects across the Protocol Labs network: IPFS, Filecoin, libp2p, Drand, and more. Contributors worked in small teams with direct access to core protocol engineers, AMAs, and technical deep dives.</p>
+      <p>The program ran on a simple premise: <strong>get recognised for what you ship, not what your CV says.</strong> Rewards were issued retroactively based on the value and impact of contributions.</p>
+      <p>Over 18 months and 6 cohorts, PLDG became a pipeline of engineering talent into the PL ecosystem; alumni have gone on to join protocol teams, found companies, and take on full-time roles.</p>
+    </div>
+    <div class="fact-table">
+      <div class="fact-row"><span class="fk">Format</span><span class="fv">Fully remote · 12-week cohorts</span></div>
+      <div class="fact-row"><span class="fk">Commitment</span><span class="fv">5–10 hrs / week · part-time</span></div>
+      <div class="fact-row"><span class="fk">First cohort</span><span class="fv fv-blue">October 2024</span></div>
+      <div class="fact-row"><span class="fk">Final cohort</span><span class="fv fv-blue">Jan – Mar 2026</span></div>
+      <div class="fact-row"><span class="fk">Powered by</span><span class="fv">Protocol Labs</span></div>
+      <div class="fact-row"><span class="fk">Status</span><span class="fv fv-green">Concluded · March 2026</span></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- HIRE ALUMNI -->
+<div class="section-dark">
+  <div class="section">
+    <div class="hire-grid">
+      <div>
+        <span class="label label-white">For teams &amp; companies</span>
+        <h2 class="heading heading-white">Looking to hire verified open source engineers?</h2>
+        <p class="sub sub-white" style="margin-top:14px;">PLDG alumni have 4,000+ merged pull requests across production Web3 infrastructure, reviewed by core protocol engineers. Many are available for full-time roles, contracts, or collaborations.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;">
+          <a class="btn btn-solid-white" href="mailto:anubha@pldevguild.ai">Get in touch to hire alumni</a>
+          <a class="btn btn-ghost-white" href="https://jobs.protocol.ai" target="_blank" rel="noopener">Browse PL jobs board ↗</a>
+        </div>
+      </div>
+      <div class="hire-cards">
+        <div class="hcard">
+          <div class="hcard-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="hcard-title">Vetted by protocol engineers</div>
+            <div class="hcard-desc">Every PR was reviewed by core maintainers at IPFS, Filecoin, libp2p, and partner projects.</div>
+          </div>
+        </div>
+        <div class="hcard">
+          <div class="hcard-icon">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div>
+            <div class="hcard-title">4,000+ PRs as proof of work</div>
+            <div class="hcard-desc">Public, verifiable track record across production-grade open source repos.</div>
+          </div>
+        </div>
+        <div class="hcard">
+          <div class="hcard-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <div class="hcard-title">20+ countries · remote-first</div>
+            <div class="hcard-desc">Globally distributed engineers experienced in async, cross-timezone work.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- TECH PARTNERS -->
+<div class="section-bg">
+  <div class="section">
+    <div class="section-hd">
+      <span class="label">Tech partners</span>
+      <h2 class="heading">11 projects across the PL network.</h2>
+      <p class="sub">Hover each to learn more. Contributors worked directly with maintainers and engineering teams throughout the program.</p>
+    </div>
+    <div class="pstrip">
+      <a class="pchip" href="https://github.com/ipfs-shipyard" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>IPFS Shipyard
+        <span class="pchip-tip">An engineering collective delivering user agency through advancements in IPFS and libp2p.</span>
+      </a>
+      <a class="pchip" href="https://libp2p.io" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>libp2p
+        <span class="pchip-tip">Open-source networking library powering Ethereum, IPFS, Filecoin, and Optimism, with pub-sub, DHTs, and browser-to-browser communication.</span>
+      </a>
+      <a class="pchip" href="https://akave.ai" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>Akave
+        <span class="pchip-tip">Decentralized modular L2 combining Filecoin storage, encryption, and user-friendly interfaces for data management.</span>
+      </a>
+      <a class="pchip" href="https://www.opensource.observer" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>Open Source Observer
+        <span class="pchip-tip">Free analytics suite helping funders measure the impact of open source contributions to ecosystem health.</span>
+      </a>
+      <a class="pchip" href="https://drand.love" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>Drand
+        <span class="pchip-tip">Distributed randomness beacon providing verifiable, unpredictable, and unbiased random numbers as a service.</span>
+      </a>
+      <a class="pchip" href="https://storacha.network" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>Storacha
+        <span class="pchip-tip">Decentralized hot storage network built on web3.storage, handling petabytes of data for large enterprises.</span>
+      </a>
+      <a class="pchip" href="https://fil.org" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>FIL-B
+        <span class="pchip-tip">Public goods developer experience team helping builders design and implement on-chain solutions on Filecoin.</span>
+      </a>
+      <a class="pchip" href="https://filoz.org" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>FIL-Oz
+        <span class="pchip-tip">Independent public good Filecoin protocol team improving protocol design, security, and development within the network.</span>
+      </a>
+      <a class="pchip" href="https://ipfs.tech" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>IPFS
+        <span class="pchip-tip">InterPlanetary File System: peer-to-peer hypermedia protocol for content-addressed, decentralised storage.</span>
+      </a>
+      <a class="pchip" href="https://lighthouse.storage" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>Lighthouse
+        <span class="pchip-tip">Programmable data layer powering AI, DePIN, and NFTs with decentralised storage and encryption.</span>
+      </a>
+      <a class="pchip" href="https://coordination.network" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>Coordination Network
+        <span class="pchip-tip">Open-source platform enabling seamless sharing of methods, opportunities, and discoveries to scale expertise.</span>
+      </a>
+      <a class="pchip" href="https://filebeam.io" target="_blank" rel="noopener">
+        <span class="pchip-dot"></span>FIL Beam
+        <span class="pchip-tip">Incentivized data delivery layer for Filecoin; storage providers can be paid in-protocol for serving data to clients.</span>
+      </a>
+    </div>
+  </div>
+</div>
+ 
+<!-- TESTIMONIALS -->
+<div class="section">
+  <div class="section-hd">
+    <span class="label">Contributor voices</span>
+    <h2 class="heading">From the builders who were there.</h2>
+  </div>
+  <div class="t-grid">
+    <div class="t-card">
+      <p class="t-quote">The learning was unmatched. I helped ship a Filecoin core upgrade; something I would not have imagined doing before PLDG.</p>
+      <div class="t-author">
+        <div class="t-av">KS</div>
+        <div><div class="t-name">Krishang Shah</div><div class="t-role">PLDG contributor</div></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p class="t-quote">We're loving our PLDG builders, phenomenal talent that hits the ground running from day one.</p>
+      <div class="t-author">
+        <div class="t-av t-av-g">JA</div>
+        <div><div class="t-name">Jamie</div><div class="t-role">Engineering, Storacha</div></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p class="t-quote">Joining the Akave team from December; a direct success story from PLDG. This program opened a door I didn't know existed.</p>
+      <div class="t-author">
+        <div class="t-av">AU</div>
+        <div><div class="t-name">Abhay Upadhyay</div><div class="t-role">PLDG alum → Akave (full-time)</div></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p class="t-quote">I joined knowing JavaScript. I left understanding distributed systems, peer-to-peer protocols, and how to contribute to protocol-level infrastructure.</p>
+      <div class="t-author">
+        <div class="t-av t-av-g">SS</div>
+        <div><div class="t-name">Siddhartha Swarnkar</div><div class="t-role">PLDG Cohort 3 &amp; 4</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<hr>
+ 
+<!-- WHAT'S NEXT -->
+<div class="section-bg">
+  <div class="section">
+    <div class="section-hd">
+      <span class="label">What's next</span>
+      <h2 class="heading">Keep building in the PL ecosystem.</h2>
+      <p class="sub">PLDG is concluding, but active programs, funding, and roles continue across the Protocol Labs network.</p>
+    </div>
+    <div class="nc-grid">
+      <a class="nc nc-1" href="https://protocol.ai/genesis" target="_blank" rel="noopener">
+        <span class="nc-tag">Accelerator</span>
+        <div class="nc-row"><span class="nc-name">PL Genesis</span><span class="nc-arr">↗</span></div>
+        <p class="nc-desc">Ecosystem accelerator for teams building on the Protocol Labs stack: funding, mentorship, and network access.</p>
+      </a>
+      <a class="nc nc-2" href="https://protocol.ai" target="_blank" rel="noopener">
+        <span class="nc-tag">Founder support</span>
+        <div class="nc-row"><span class="nc-name">Founders Forge</span><span class="nc-arr">↗</span></div>
+        <p class="nc-desc">Structured support for early-stage founders: team formation, co-founders, and go-to-market within PL.</p>
+      </a>
+      <a class="nc nc-3" href="https://crecimiento.build" target="_blank" rel="noopener">
+        <span class="nc-tag">LATAM program</span>
+        <div class="nc-row"><span class="nc-name">Crecimiento</span><span class="nc-arr">↗</span></div>
+        <p class="nc-desc">Dedicated support for builders across Latin America: community, grants, and ecosystem connections.</p>
+      </a>
+      <a class="nc nc-4" href="https://protocol.ai" target="_blank" rel="noopener">
+        <span class="nc-tag">Early-stage builders</span>
+        <div class="nc-row"><span class="nc-name">Founder School</span><span class="nc-arr">↗</span></div>
+        <p class="nc-desc">For contributors turning open-source work into a company: from proof-of-work to product.</p>
+      </a>
+      <a class="nc nc-5" href="https://protocol.ai/events" target="_blank" rel="noopener">
+        <span class="nc-tag">Hackathons &amp; meetups</span>
+        <div class="nc-row"><span class="nc-name">PL Events</span><span class="nc-arr">↗</span></div>
+        <p class="nc-desc">LabWeek, hackathons, and community meetups across the PL network, in-person and virtual.</p>
+      </a>
+      <a class="nc nc-6" href="https://jobs.protocol.ai" target="_blank" rel="noopener">
+        <span class="nc-tag">Open roles</span>
+        <div class="nc-row"><span class="nc-name">PL Jobs Board</span><span class="nc-arr">↗</span></div>
+        <p class="nc-desc">Engineering, research, and community roles across 600+ organisations in the Protocol Labs network.</p>
+      </a>
+    </div>
+    <a class="devspot" href="https://devspot.app" target="_blank" rel="noopener">
+      <div>
+        <div class="ds-name">DevSpot</div>
+        <div class="ds-sub">Central directory for PL ecosystem opportunities: grants, roles, programs, and events. Worth bookmarking.</div>
+      </div>
+      <div class="ds-cta">Explore DevSpot →</div>
+    </a>
+  </div>
+</div>
+ 
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-inner">
+    <span class="label" style="display:block;text-align:center;">Protocol Labs Developer Guild · 2024 – 2026</span>
+    <h2 class="heading" style="margin-top:4px;">Thank you to every contributor.</h2>
+    <p class="closing-body">Six cohorts. 18 months. 4,000+ pull requests. 20+ countries. 11 tech partners. This program was shaped by every developer who showed up, shipped work, and pushed the open web forward.</p>
+    <div class="closing-actions">
+      <a class="btn btn-primary" href="https://devspot.app" target="_blank" rel="noopener">Find your next opportunity</a>
+      <a class="btn btn-outline" href="https://twitter.com/pldevguild" target="_blank" rel="noopener">@pldevguild on X</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-copy">PLDG · Protocol Labs Developer Guild · 2024 – 2026</div>
+  <div class="footer-links">
+    <a class="footer-link" href="https://protocol.ai" target="_blank" rel="noopener">Protocol Labs</a>
+    <a class="footer-link" href="https://devspot.app" target="_blank" rel="noopener">DevSpot</a>
+    <a class="footer-link" href="https://twitter.com/pldevguild" target="_blank" rel="noopener">X / Twitter</a>
+    <a class="footer-link" href="https://github.com/protocol" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+ 
+</body>
 </html>
