@@ -89,7 +89,7 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-body {
   flex: 1; display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0;
   max-width: var(--max); margin: 0 auto;
   padding: 72px var(--pad) 48px;
@@ -390,7 +390,7 @@ hr { border: none; border-top: 1px solid var(--gE); }
           What's next on DevSpot
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
-        <a class="btn btn-ghost" href="/cdn-cgi/l/email-protection#4f2c20213b2e2c3b0f3f3d203b202c2023612e26">Hire our alumni</a>
+        <a class="btn btn-ghost" href="mailto:contact@protocol.ai">Hire our alumni</a>
       </div>
     </div>
     </div>
@@ -440,7 +440,7 @@ hr { border: none; border-top: 1px solid var(--gE); }
     <div style="margin-top:28px;padding:20px 22px;background:var(--gF);border:1.5px solid var(--gE);border-radius:10px;">
       <div style="font-size:13.5px;font-weight:500;color:var(--black);margin-bottom:4px;">Program Retrospective — All 6 Cohorts</div>
       <div style="font-size:13px;color:var(--g70);margin-bottom:16px;">Engagement data across the full program, Oct 2024 – Mar 2026.</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
         <div style="background:var(--white);border:1px solid var(--gE);border-radius:8px;padding:12px 14px;">
           <div style="font-size:20px;font-weight:700;color:var(--black);letter-spacing:-0.03em;">376</div>
           <div style="font-size:11px;color:var(--g70);text-transform:uppercase;letter-spacing:0.05em;margin-top:2px;">Contributors</div>
@@ -458,7 +458,6 @@ hr { border: none; border-top: 1px solid var(--gE); }
           <div style="font-size:11px;color:var(--g70);text-transform:uppercase;letter-spacing:0.05em;margin-top:2px;">Avg NPS</div>
         </div>
       </div>
-
     </div>
     </div>
     <div class="fact-table">
@@ -481,7 +480,7 @@ hr { border: none; border-top: 1px solid var(--gE); }
         <h2 class="heading heading-wh">Looking to hire verified open source engineers?</h2>
         <p class="sub sub-wh" style="margin-top:14px;">PLDG alumni have 5,000+ merged pull requests across production Web3 infrastructure, reviewed by core protocol engineers. Many are available for full-time roles, contracts, or collaborations.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:30px;">
-          <a class="btn btn-white" href="/cdn-cgi/l/email-protection#6e0d01001a0f0d1a2e1e1c011a010d0102400f07">Get in touch to hire alumni</a>
+          <a class="btn btn-white" href="mailto:contact@protocol.ai">Get in touch to hire alumni</a>
           <a class="btn btn-wh-ghost" href="https://jobs.protocol.ai" target="_blank" rel="noopener">Browse PL jobs board ↗</a>
         </div>
       </div>
@@ -653,32 +652,29 @@ hr { border: none; border-top: 1px solid var(--gE); }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function runCounters() {
-  var ease = function(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; };
-  var counters = document.querySelectorAll('.sc-num[data-target]');
-  counters.forEach(function(el) {
-    var target = parseInt(el.getAttribute('data-target'));
-    var suffix = el.getAttribute('data-suffix') || '';
-    var duration = 1400;
-    var startTime = null;
-    function tick(now) {
-      if (!startTime) startTime = now;
-      var elapsed = now - startTime;
-      var progress = Math.min(elapsed / duration, 1);
-      var val = Math.round(ease(progress) * target);
-      el.innerHTML = val + (suffix ? '<span class="g">' + suffix + '</span>' : '');
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+<script>
+const counters = document.querySelectorAll(".sc-num[data-target]");
+const ease = t => t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || "";
+  const duration = 1400;
+  const start = performance.now();
+  const tick = now => {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const val = Math.round(ease(progress) * target);
+    el.innerHTML = val + (suffix ? '<span class="g">' + suffix + '</span>' : "");
+    if (progress < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { animateCounter(e.target); observer.unobserve(e.target); }
   });
-}
-// Run immediately, then again after page fully settles
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() { setTimeout(runCounters, 100); });
-} else {
-  setTimeout(runCounters, 100);
-}
+}, { threshold: 0.5 });
+counters.forEach(c => observer.observe(c));
 
 const faders = document.querySelectorAll(".t-card, .nc, .hcard, .pchip, .dash-stat-card");
 const fadeObs = new IntersectionObserver(entries => {
@@ -703,4 +699,19 @@ if (dashChart) {
   const dashObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        const bars = dashChart.querySelectorAll(".dm-bar
+        const bars = dashChart.querySelectorAll(".dm-bar");
+        bars.forEach((bar, i) => {
+          const h = bar.style.height;
+          bar.style.height = "0%";
+          bar.style.transition = `height 0.6s ease ${i * 0.05}s`;
+          setTimeout(() => { bar.style.height = h; }, 50);
+        });
+        dashObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  dashObs.observe(dashChart);
+}
+</script>
+</body>
+</html>
